@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/zsh
 
 if [ ! -d "$HOME/.dotfiles" ]; then
   git clone https://github.com/rav1ko/dotfiles.git "$HOME/.dotfiles"

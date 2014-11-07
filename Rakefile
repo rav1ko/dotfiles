@@ -2,22 +2,26 @@ require 'rake'
 require 'fileutils'
 require File.join(File.dirname(__FILE__), 'lib', 'vundle')
 
+task :default => :install
+
 desc "Installs dotfiles"
 task :install => [:submodules_init, :submodules] do
-  puts
-  puts "======================================================"
-  puts "                linking files."
-  puts "======================================================"
-  puts
-#  link(Dir.glob('git/*'))
-#  link(Dir.glob('ruby/*'))
-#  link(Dir.glob('ctags/*'))
-  link(Dir.glob('tmux/*'))
-  link(Dir.glob('{vim,vimrc}'))
 
   install_rvm_binstubs
 
-  Rake::Task["vundle"].excecute
+  puts
+  puts "======================================================"
+  puts "                symlinking files."
+  puts "======================================================"
+  puts
+#  file_operation(Dir.glob('git/*'))
+#  file_operation(Dir.glob('ruby/*'))
+#  file_operation(Dir.glob('ctags/*'))
+  file_operation(Dir.glob('tmux/*'))
+  file_operation(Dir.glob('{vim,vimrc}'))
+
+
+  Rake::Task["vundle"].execute
 
   install_prezto
 
@@ -62,18 +66,34 @@ task :vundle do
   Vundle::update_vundle
 end
 
-task :default => 'install'
-
 private
+
 def run(cmd)
   puts "[Running] #{cmd}"
   `#{cmd}` unless ENV['DEBUG']
 end
 
-def link(files, method = :symlink)
+def install_prezto
+  unless Dir.exists?("#{ENV['HOME']}/prezto")
+    run %{ git clone --recursive https://github.com/rav1ko/prezto.git "${ZDOTDIR:-$HOME}"/.zprezto }
+  end
+
+  run %{
+    cd "${ZDOTDIR:-$HOME}"/.zprezto
+    git submodule update --init --recursive
+  }
+
+  file_operation(Dir.glob("#{ENV['HOME']}/.zprezto/runcoms/z*"), method = :copy, src = :full)
+end
+
+def file_operation(files, method = :symlink, src = :relative)
   files.each do |f|
     file = f.split('/').last
-    source = "#{ENV["PWD"]}/#{f}"
+    if src == :relative
+      source = "#{ENV["PWD"]}/#{f}"
+    else
+      source = f
+    end
     target = "#{ENV["HOME"]}/.#{file}"
 
     puts "======================#{file}=============================="
@@ -121,18 +141,10 @@ def run_bundle_config
   puts
 end
 
-def install_prezto()
-  puts
-  puts "Installing Prezto (ZSH Enhancements)..."
-
-  run %{ ln -nfs "$HOME/.dotfiles/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
-
-  # The prezto runcoms are only going to be installed if zprezto has never been installed
-  link(Dir.glob('zsh/prezto/runcoms/z*'), :copy)
-
-  puts
-  puts "Overriding prezto ~/.zpreztorc to enable additional modules..."
-  run %{ ln -nfs "$HOME/.dotfiles/zsh/prezto-override/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
-
+def install_rvm_binstubs
+  puts "======================================================"
+  puts "Installing RVM Bundler support."
+  puts "======================================================"
+  run %{ chmod +x $rvm_path/hooks/after_cd_bundler }
   puts
 end

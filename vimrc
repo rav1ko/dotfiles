@@ -102,3 +102,11 @@ set smartcase       " ...unless we type a capital
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+
+" ================ Custom configurations =============
+let vimsettings = '~/.vim/settings'
+let uname = system("uname -s")
+
+for fpath in split(globpath(vimsettings, '*.vim'), '\n')
+  exe 'source' fpath
+endfor
