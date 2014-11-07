@@ -14,7 +14,7 @@ task :install => [:submodules_init, :submodules] do
   puts "                symlinking files."
   puts "======================================================"
   puts
-#  file_operation(Dir.glob('git/*'))
+  file_operation(Dir.glob('git/*'))
 #  file_operation(Dir.glob('ruby/*'))
 #  file_operation(Dir.glob('ctags/*'))
   file_operation(Dir.glob('tmux/*'))
@@ -74,7 +74,7 @@ def run(cmd)
 end
 
 def install_prezto
-  unless Dir.exists?("#{ENV['HOME']}/prezto")
+  unless Dir.exists?("#{ENV['HOME']}/.zprezto")
     run %{ git clone --recursive https://github.com/rav1ko/prezto.git "${ZDOTDIR:-$HOME}"/.zprezto }
   end
 
