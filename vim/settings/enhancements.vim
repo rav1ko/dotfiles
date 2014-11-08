@@ -19,7 +19,6 @@ let g:syntastic_c_include_dirs = ['/usr/avr/include']
 "==================================================
 " NerdTree
 "==================================================
-
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1

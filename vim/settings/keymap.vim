@@ -21,6 +21,9 @@ nmap <Leader>r :source $MYVIMRC<CR>
 " stolen from Steve Losh
 cmap w!! w !sudo tee % >/dev/null
 
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
+
 "==================================================
 " File specific keymaps
 "==================================================

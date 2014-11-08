@@ -20,7 +20,6 @@ task :install => [:submodules_init, :submodules] do
   file_operation(Dir.glob('tmux/*'))
   file_operation(Dir.glob('{vim,vimrc}'))
 
-
   Rake::Task["vundle"].execute
 
   install_prezto
