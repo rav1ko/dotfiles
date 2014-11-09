@@ -16,7 +16,7 @@ task :install => [:submodules_init, :submodules] do
   puts
   file_operation(Dir.glob('git/*'))
 #  file_operation(Dir.glob('ruby/*'))
-#  file_operation(Dir.glob('ctags/*'))
+  file_operation(Dir.glob('ctags/*'))
   file_operation(Dir.glob('tmux/*'))
   file_operation(Dir.glob('{vim,vimrc}'))
 
