@@ -22,6 +22,12 @@ Bundle "scrooloose/syntastic.git"
 Bundle "sjl/gundo.vim"
 Bundle "godlygeek/tabular"
 Bundle "jamessan/vim-gnupg"
+Bundle "tomtom/tcomment_vim"
+Bundle "majutsushi/tagbar"
+Bundle "AndrewRadev/splitjoin.vim"
+Bundle "Raimondi/delimitMate"
+Bundle "Shougo/neocomplete.vim"
+Bundle 'Shougo/neosnippet'
 
 " git
 Bundle "tpope/vim-fugitive"
@@ -34,5 +40,11 @@ Bundle "kien/ctrlp.vim"
 Bundle "scrooloose/nerdtree.git"
 Bundle "jistr/vim-nerdtree-tabs.git"
 
+" language
+Bundle "fatih/vim-go"
+
 " tmux_integration
 Bundle "christoomey/vim-tmux-navigator"
+
+" Util
+Bundle 'rav1ko/neosnippet-snippets'
