@@ -15,9 +15,9 @@ task :install => [:submodules_init, :submodules] do
   puts "======================================================"
   puts
   file_operation(Dir.glob('git/*'))
-#  file_operation(Dir.glob('ruby/*'))
   file_operation(Dir.glob('ctags/*'))
   file_operation(Dir.glob('tmux/*'))
+  file_operation(Dir.glob('xorg/*'))
   file_operation(Dir.glob('{vim,vimrc}'))
 
   Rake::Task["vundle"].execute
@@ -82,16 +82,16 @@ def install_prezto
     git submodule update --init --recursive
   }
 
-  file_operation(Dir.glob("#{ENV['HOME']}/.zprezto/runcoms/z*"), method = :copy, src = :full)
+  file_operation(Dir.glob("#{ENV['HOME']}/.zprezto/runcoms/z*"), method = :copy)
 end
 
-def file_operation(files, method = :symlink, src = :relative)
+def file_operation(files, method = :symlink)
   files.each do |f|
     file = f.split('/').last
-    if src == :relative
-      source = "#{ENV["PWD"]}/#{f}"
-    else
+    if f[0] == "/"
       source = f
+    else
+      source = "#{ENV['PWD']}/#{file}"
     end
     target = "#{ENV["HOME"]}/.#{file}"
 
