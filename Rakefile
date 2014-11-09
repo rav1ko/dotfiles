@@ -90,8 +90,11 @@ def file_operation(files, method = :symlink)
     file = f.split('/').last
     if f[0] == "/"
       source = f
-    else
+    elsif !f.include?('/')
       source = "#{ENV['PWD']}/#{file}"
+    else
+      dir = f.split('/').first
+      source = "#{ENV['PWD']}/#{dir}/#{file}"
     end
     target = "#{ENV["HOME"]}/.#{file}"
 
@@ -105,7 +108,7 @@ def file_operation(files, method = :symlink)
     end
 
     if method == :symlink
-      run %{ ln -nfs "#{source}" "#{target}" }
+      run %{ ln -fs "#{source}" "#{target}" }
     else
       run %{ cp -f "#{source}" "#{target}" }
     end
