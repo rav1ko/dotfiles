@@ -28,9 +28,16 @@ nmap <Leader>p :call Preview_md()<CR>
 " reload vim
 nmap <Leader>r :source $MYVIMRC<CR>
 
-" ========== Nerdtree  ==========="
-" NERDTree
 map <F2> :NERDTreeToggle<CR>
+
+nnoremap <F6> :setlocal spell! spell?<CR>
+
+"Reindent whoel file
+map <F7> mzgg=G`z<CR>
+
+nmap <F8> :TagbarToggle<CR>
+
+nnoremap <leader>c :TComment<cr>
 
 " ========== Steve Losh hacks ==========="
 " w!! to write a file as sudo

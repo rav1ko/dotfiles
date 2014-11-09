@@ -22,6 +22,10 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_c_include_dirs = ['/usr/avr/include']
 
 "==================================================
+" TagBar
+"==================================================
+
+"==================================================
 " NerdTree
 "==================================================
 " Make nerdtree look nice
@@ -62,7 +66,13 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"==================================================
+" DelimitMate
+"==================================================
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
 
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 "==================================================
 " NeoSnippet
 "==================================================
@@ -84,7 +94,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "==================================================
 " Neocomplete
 "==================================================
-imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
