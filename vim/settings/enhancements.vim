@@ -184,7 +184,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "==================================================
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "gofmt"
-
+let g:go_bin_path = $HOME . "/.go/bin"
+let g:go_snippet_engine = "neosnippet"
 
 au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>s <Plug>(go-def-split)
