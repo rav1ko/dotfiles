@@ -7,6 +7,9 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
+        color_bad = "#DC322F"
+        color_degraded = "#b58900"
+        color_good = "#859900"
         colors = true
         interval = 1
 }
@@ -17,7 +20,7 @@ order += "cpu_temperature 0"
 order += "load"
 order += "volume master"
 order += "battery 0"
-order += "tztime Chicago"
+order += "tztime local"
 
 wireless wlp1s0 {
         format_up = "W: %ip (%quality at %essid, %bitrate)"
@@ -43,7 +46,7 @@ run_watch VPN {
         pidfile = "/var/run/vpnc/pid"
 }
 
-tztime Chicago {
+tztime local {
         format = "%Y-%m-%d %H:%M:%S"
 }
 
