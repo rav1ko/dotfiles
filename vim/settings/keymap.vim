@@ -30,9 +30,9 @@ nmap <Leader>r :source $MYVIMRC<CR>
 
 map <F2> :NERDTreeToggle<CR>
 
-nnoremap <F6> :setlocal spell! spell?<CR>
+nnoremap <F4> :setlocal spell! spell?<CR>
 
-"Reindent whoel file
+"Reindent whole file
 map <F7> mzgg=G`z<CR>
 
 nmap <F8> :TagbarToggle<CR>

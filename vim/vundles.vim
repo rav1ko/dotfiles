@@ -29,6 +29,18 @@ Bundle "Raimondi/delimitMate"
 Bundle "Shougo/neocomplete.vim"
 Bundle 'Shougo/neosnippet'
 
+" Rails
+Bundle "ecomba/vim-ruby-refactoring"
+Bundle "tpope/vim-rails.git"
+Bundle "tpope/vim-rake.git"
+Bundle "tpope/vim-rvm.git"
+Bundle "vim-ruby/vim-ruby.git"
+Bundle "Keithbsmiley/rspec.vim"
+Bundle "skwp/vim-iterm-rspec"
+Bundle "skwp/vim-spec-finder"
+Bundle "ck3g/vim-change-hash-syntax"
+Bundle "tpope/vim-bundler"
+
 " git
 Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-git"
