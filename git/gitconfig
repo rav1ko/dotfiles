@@ -42,9 +42,10 @@
   # the usual default is to push all branches
   default = tracking
 [core]
-  autocrlf = false
+	autocrlf = input
   editor = vim
   excludesfile = ~/.dotfiles/git/gitignore
+	safecrlf = true
 [advice]
   statusHints = false
 [diff]
